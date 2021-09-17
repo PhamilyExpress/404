@@ -45,6 +45,7 @@ def main():
       conn, addr = proxy_start.accept()
 
       p = Process(target=handle_request, args=(conn, addr))
+      p.daemon = True
       p.start()
 
       conn.close()
